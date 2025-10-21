@@ -1,27 +1,36 @@
+window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(255, 255, 255, 0.9)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.1)';
+            }
+        });
 
-document.getElementById('contact-form').addEventListener('submit', function (e) {
-  e.preventDefault();
-  alert('Thank you for reaching out!');
-});
+        // Add smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
 
-const educationData = [
-  {
-    institution: "Andhra Mahila Sabha Arts and Science College for Women",
-    degree: "Bachelor of Administration (B.A.)",
-    year: "2022 – 2025",
-    location: "Hyderabad, India"
-  }
-];
+        // Add animation to skill cards on scroll
+        const skillCards = document.querySelectorAll('.skill-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
 
-const educationList = document.getElementById('education-list');
-educationData.forEach(edu => {
-  const card = document.createElement('div');
-  card.className = 'education-card';
-  card.innerHTML = `
-    <h3>${edu.degree}</h3>
-    <p><strong>Institution:</strong> ${edu.institution}</p>
-    <p><strong>Location:</strong> ${edu.location}</p>
-    <p><strong>Year:</strong> ${edu.year}</p>
-  `;
-  educationList.appendChild(card);
-});
+        skillCards.forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });

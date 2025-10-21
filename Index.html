@@ -3,474 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cartoon Portfolio</title>
+    <title>Shirisha.Basani</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Comic Neue', cursive;
-        }
-
-        :root {
-            --primary: #000000;
-            --secondary: #ffffff;
-            --accent: #333333;
-            --glass: rgba(255, 255, 255, 0.1);
-        }
-
-        body {
-            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
-            color: var(--primary);
-            overflow-x: hidden;
-        }
-
-        /* Navigation with Glass Effect */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            background: var(--glass);
-            border-bottom: 2px solid var(--primary);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--primary);
-            text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo span {
-            color: var(--accent);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 18px;
-            position: relative;
-            padding: 5px 0;
-            transition: all 0.3s ease;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: var(--primary);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-links a:hover {
-            transform: translateY(-3px);
-        }
-
-        /* Sections */
-        section {
-            min-height: 100vh;
-            padding: 100px 50px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Home Section */
-        #home {
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="white"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="black" stroke-width="1" opacity="0.1"/></svg>');
-            background-size: 50px;
-            text-align: center;
-            position: relative;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero-content h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
-            animation: bounce 2s infinite alternate;
-        }
-
-        .hero-content p {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: var(--primary);
-            color: var(--secondary);
-            border: 2px solid var(--primary);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            border-radius: 30px;
-            transition: all 0.3s ease;
-            box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn:hover {
-            background: transparent;
-            color: var(--primary);
-            transform: translateY(-5px);
-            box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.2);
-        }
-
-        .cartoon-character {
-            width: 200px;
-            height: 200px;
-            background: var(--primary);
-            border-radius: 50% 50% 40% 40%;
-            position: absolute;
-            bottom: 50px;
-            right: 100px;
-            animation: float 4s ease-in-out infinite;
-        }
-
-        .cartoon-character::before, .cartoon-character::after {
-            content: '';
-            position: absolute;
-            background: var(--primary);
-        }
-
-        .cartoon-character::before {
-            width: 40px;
-            height: 60px;
-            top: -30px;
-            left: 40px;
-            border-radius: 50%;
-            transform: rotate(-20deg);
-        }
-
-        .cartoon-character::after {
-            width: 40px;
-            height: 60px;
-            top: -30px;
-            right: 40px;
-            border-radius: 50%;
-            transform: rotate(20deg);
-        }
-
-        /* Skills Section */
-        #skills {
-            background: var(--secondary);
-            border-top: 5px dashed var(--primary);
-            border-bottom: 5px dashed var(--primary);
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            text-align: center;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 5px;
-            background: var(--primary);
-        }
-
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            width: 100%;
-            max-width: 1200px;
-        }
-
-        .skill-card {
-            background: var(--secondary);
-            border: 3px solid var(--primary);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.2);
-        }
-
-        .skill-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-
-        .skill-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-
-        .skill-card p {
-            line-height: 1.6;
-        }
-
-        /* About Section */
-        #about {
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="white"/><circle cx="50" cy="50" r="40" stroke="black" stroke-width="2" fill="none" opacity="0.1"/></svg>');
-            background-size: 60px;
-        }
-
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-            max-width: 1200px;
-        }
-
-        .about-text {
-            flex: 1;
-        }
-
-        .about-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .about-text p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        .about-image {
-            flex: 1;
-            text-align: center;
-        }
-
-        .cartoon-avatar {
-            width: 300px;
-            height: 300px;
-            background: var(--primary);
-            border-radius: 50%;
-            position: relative;
-            animation: rotate 10s linear infinite;
-            box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.2);
-        }
-
-        .cartoon-avatar::before, .cartoon-avatar::after {
-            content: '';
-            position: absolute;
-            background: var(--secondary);
-        }
-
-        .cartoon-avatar::before {
-            width: 100px;
-            height: 100px;
-            top: 60px;
-            left: 50px;
-            border-radius: 50%;
-        }
-
-        .cartoon-avatar::after {
-            width: 100px;
-            height: 100px;
-            top: 60px;
-            right: 50px;
-            border-radius: 50%;
-        }
-
-        /* Projects Section (Blog Style) */
-        #projects {
-            background: var(--secondary);
-            border-top: 5px dashed var(--primary);
-        }
-
-        .blog-container {
-            max-width: 1200px;
-            width: 100%;
-        }
-
-        .blog-post {
-            background: var(--secondary);
-            border: 3px solid var(--primary);
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 40px;
-            box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .blog-post:hover {
-            transform: translateY(-10px);
-            box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.2);
-        }
-
-        .blog-post::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 10px;
-            background: var(--primary);
-        }
-
-        .blog-meta {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 15px;
-            font-size: 0.9rem;
-            color: var(--accent);
-        }
-
-        .blog-post h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-        }
-
-        .blog-post p {
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-
-        .read-more {
-            display: inline-block;
-            color: var(--primary);
-            font-weight: 700;
-            text-decoration: none;
-            border-bottom: 2px solid var(--primary);
-            padding-bottom: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .read-more:hover {
-            padding-left: 10px;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--primary);
-            color: var(--secondary);
-            padding: 30px;
-            text-align: center;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .social-links a {
-            color: var(--secondary);
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Animations */
-        @keyframes bounce {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(-20px);
-            }
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes rotate {
-            0% {
-                transform: rotate(0);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            nav {
-                padding: 15px 20px;
-            }
-            
-            .nav-links {
-                gap: 15px;
-            }
-            
-            .nav-links a {
-                font-size: 16px;
-            }
-            
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-            
-            .cartoon-character {
-                display: none;
-            }
-            
-            .about-content {
-                flex-direction: column;
-            }
-            
-            .cartoon-avatar {
-                width: 200px;
-                height: 200px;
-            }
-        }
-    </style>
+    <link rel="StyleSheet" href="./Style.css">
 </head>
 <body>
     <!-- Navigation with Glass Effect -->
     <nav>
-        <div class="logo">CARTOON<span>PORTFOLIO</span></div>
+        <div class="logo">SHIRISHA.<span>BASANI</span></div>
         <div class="nav-links">
             <a href="#home">Home</a>
             <a href="#skills">Skills</a>
@@ -482,7 +22,7 @@
     <!-- Home Section -->
     <section id="home">
         <div class="hero-content">
-            <h1>HELLO, I'M CARTOON DEV</h1>
+            <h1>HELLO, I'M SHIRISHA BASANI</h1>
             <p>A passionate designer & developer creating fun and engaging digital experiences with a cartoon twist!</p>
             <a href="#projects" class="btn">View My Work</a>
         </div>
@@ -529,7 +69,7 @@
         <h2 class="section-title">ABOUT ME</h2>
         <div class="about-content">
             <div class="about-text">
-                <h2>The Story Behind the Cartoons</h2>
+                <h2>MY Story Behind the code </h2>
                 <p>Hello! I'm a passionate designer and developer who loves bringing characters and stories to life through digital art. My journey began with doodles in the margins of my notebooks and has evolved into creating engaging digital experiences.</p>
                 <p>I believe that great design should not only look good but also tell a story and create an emotional connection with the audience. My work combines technical expertise with creative storytelling to deliver memorable experiences.</p>
                 <p>When I'm not designing or coding, you can find me sketching new characters, playing indie games, or enjoying animated films for inspiration.</p>
@@ -548,7 +88,7 @@
             <div class="blog-post">
                 <div class="blog-meta">
                     <span><i class="far fa-calendar"></i> June 15, 2023</span>
-                    <span><i class="far fa-folder"></i> Web Design</span>
+                    <span><i class="far fa-folder"></i> TO-DO APP</span>
                 </div>
                 <h3>Animated Portfolio Website</h3>
                 <p>Created a fully responsive portfolio website with custom cartoon animations and interactive elements. The project involved character design, motion graphics, and front-end development using HTML, CSS, and JavaScript.</p>
@@ -557,7 +97,7 @@
             <div class="blog-post">
                 <div class="blog-meta">
                     <span><i class="far fa-calendar"></i> April 22, 2023</span>
-                    <span><i class="far fa-folder"></i> Character Design</span>
+                    <span><i class="far fa-folder"></i> Currency Converter</span>
                 </div>
                 <h3>Cartoon Character Series</h3>
                 <p>Designed and illustrated a series of original cartoon characters for a children's educational app. Each character has unique personality traits and animations that help engage young learners with the content.</p>
@@ -566,7 +106,7 @@
             <div class="blog-post">
                 <div class="blog-meta">
                     <span><i class="far fa-calendar"></i> February 10, 2023</span>
-                    <span><i class="far fa-folder"></i> Game Development</span>
+                    <span><i class="far fa-folder"></i> Crud Application</span>
                 </div>
                 <h3>Interactive Storybook Game</h3>
                 <p>Developed an interactive storybook game where players make choices that affect the narrative outcome. The project combined illustration, animation, and game logic to create an immersive storytelling experience.</p>
@@ -586,44 +126,6 @@
         <p>&copy; 2023 Cartoon Portfolio. All rights reserved.</p>
     </footer>
 
-    <script>
-        // Add scroll effect to navigation
-        window.addEventListener('scroll', function() {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.style.background = 'rgba(255, 255, 255, 0.9)';
-            } else {
-                nav.style.background = 'rgba(255, 255, 255, 0.1)';
-            }
-        });
-
-        // Add smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Add animation to skill cards on scroll
-        const skillCards = document.querySelectorAll('.skill-card');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        skillCards.forEach(card => {
-            card.style.opacity = 0;
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            observer.observe(card);
-        });
-    </script>
+    <script src="./Main.js"></script>
 </body>
 </html>
