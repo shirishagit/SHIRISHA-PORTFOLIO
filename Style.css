@@ -279,26 +279,9 @@
             box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.2);
         }
 
-        .cartoon-avatar::before, .cartoon-avatar::after {
-            content: '';
-            position: absolute;
-            background: var(--secondary);
-        }
-
-        .cartoon-avatar::before {
-            width: 100px;
-            height: 100px;
-            top: 60px;
-            left: 50px;
-            border-radius: 50%;
-        }
-
-        .cartoon-avatar::after {
-            width: 100px;
-            height: 100px;
-            top: 60px;
-            right: 50px;
-            border-radius: 50%;
+        
+        .about-image img{
+            border-radius: 50px;
         }
 
         /* Projects Section (Blog Style) */
