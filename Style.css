@@ -36,6 +36,59 @@
             border-radius: 20px;
         }
 
+        /* Default desktop navbar */
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+/* Hamburger hidden on desktop */
+.hamburger {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* ---------------------------- */
+/*      MOBILE NAV MENU         */
+/* ---------------------------- */
+@media (max-width: 768px) {
+
+    /* Show hamburger */
+    .hamburger {
+        display: block;
+        z-index: 999;
+    }
+
+    /* Hide nav links (mobile default) */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 65%;
+        height: 100vh;
+        background: rgba(0,0,0,0.85);
+        backdrop-filter: blur(8px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+        transition: 0.4s ease-in-out;
+    }
+
+    .nav-links a {
+        color: #fff;
+        font-size: 20px;
+    }
+
+    /* When JS adds this class => menu slides in */
+    .nav-active {
+        right: 0;
+    }
+}
+
+
         .logo {
             font-size: 28px;
             font-weight: 700;
@@ -465,7 +518,8 @@
             }
             
             .nav-links {
-                gap: 15px;
+             display: none;
+
             }
             
             .nav-links a {
@@ -487,5 +541,195 @@
             .cartoon-avatar {
                 width: 200px;
                 height: 200px;
+            }
+        }
+
+
+        /* ------------------------- */
+/*   GLOBAL RESPONSIVE FIX   */
+/* ------------------------- */
+
+* {
+    max-width: 100%;
+}
+
+/* NAVBAR */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    font-size: 16px;
+}
+
+/* MOBILE NAVIGATION */
+@media (max-width: 768px) {
+    nav {
+        padding: 15px 20px;
+    }
+
+    .nav-links {
+        display: none; 
+    }
+}
+
+/* HOME SECTION */
+#home {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 120px 40px;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+#home .hero-content {
+    width: 50%;
+}
+
+
+
+/* MOBILE HOME SECTION */
+@media (max-width: 768px) {
+    #home {
+        padding: 110px 20px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #home .hero-content,
+    .cartoon-character {
+        width: 100%;
+    }
+}
+
+/* SKILLS */
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    padding: 20px;
+}
+
+.skill-card {
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* TABLET SKILLS */
+@media (max-width: 992px) {
+    .skills-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* MOBILE SKILLS */
+@media (max-width: 600px) {
+    .skills-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ABOUT SECTION */
+.about-content {
+    display: flex;
+    gap: 40px;
+    padding: 50px 40px;
+    align-items: center;
+}
+
+.about-text {
+    width: 60%;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 15px;
+}
+
+/* MOBILE ABOUT */
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .about-text {
+        width: 100%;
+    }
+}
+
+
+/* TABLET PROJECTS */
+@media (max-width: 992px) {
+    .blog-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* MOBILE PROJECTS */
+@media (max-width: 600px) {
+    .blog-container {
+        grid-template-columns: 1fr;
+        padding: 10px;
+    }
+}
+
+/* EDUCATION TABLE */
+.education-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.education-table th,
+.education-table td {
+    padding: 12px;
+    border: 1px solid #ccc;
+}
+
+/* MOBILE TABLE SCROLL */
+@media (max-width: 600px) {
+    .education-content {
+        overflow-x: auto;
+    }
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 30px 10px;
+}
+
+.social-links {
+    margin: 15px 0;
+}
+
+.social-links a {
+    font-size: 24px;
+    margin: 0 10px;
+}
+@media (max-width: 480px) {
+            nav {
+                padding: 10px 15px;
+            }
+            .logo {
+                font-size: 22px;
             }
         }
